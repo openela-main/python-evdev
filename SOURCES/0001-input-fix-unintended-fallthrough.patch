@@ -1,0 +1,25 @@
+From 9c027ce3e5564375a20cfcb4a8d95df2565af793 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Fri, 5 Oct 2018 08:32:13 +1000
+Subject: [PATCH] input: fix unintended fallthrough
+
+---
+ evdev/input.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/evdev/input.c b/evdev/input.c
+index b3e6e08..b37d3b7 100644
+--- a/evdev/input.c
++++ b/evdev/input.c
+@@ -381,7 +381,7 @@ void print_ff_effect(struct ff_effect* effect) {
+                 effect->u.constant.envelope.attack_level,
+                 effect->u.constant.envelope.fade_length,
+                 effect->u.constant.envelope.fade_level);
+-
++        break;
+     case FF_RUMBLE:
+         fprintf(stderr, "  rumble: (%d, %d)\n",
+ 		effect->u.rumble.strong_magnitude,
+-- 
+2.17.1
+
